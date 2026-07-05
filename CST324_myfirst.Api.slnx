@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="CST324_myfirst.Api/CST324_myfirst.Api.csproj" />
+  <Project Path="MyGuitarShop.Common/MyGuitarShop.Common.csproj" />
+  <Project Path="MyGuitarShop.Data.Ado/MyGuitarShop.Data.Ado.csproj" />
+</Solution>

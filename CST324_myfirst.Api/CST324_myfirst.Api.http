@@ -1,0 +1,6 @@
+@CST324_myfirst.Api_HostAddress = http://localhost:5294
+
+GET {{CST324_myfirst.Api_HostAddress}}/
+Accept: application/json
+
+###
