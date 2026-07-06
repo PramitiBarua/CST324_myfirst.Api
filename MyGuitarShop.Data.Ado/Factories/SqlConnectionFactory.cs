@@ -9,7 +9,7 @@ namespace MyGuitarShop.Data.Ado.Factories
 {
     public class SqlConnectionFactory(string connectionString)
     {
-        public SqlConnection sqlConnection()
+        public SqlConnection OpenSqlConnection()
         {
             var connection = new SqlConnection(connectionString);
             connection.Open();

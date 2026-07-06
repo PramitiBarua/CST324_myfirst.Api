@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.HttpLogging;
 using MyGuitarShop.Data.Ado.Factories;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace CST324_myfirst.Api
 {
     public static class Program
     {
-        public static async void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             try
             {
