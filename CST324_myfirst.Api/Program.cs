@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.HttpLogging;
 using MyGuitarShop.Data.Ado.Factories;
 using System.Diagnostics;
 
@@ -12,8 +13,10 @@ namespace CST324_myfirst.Api
             {
                 var builder = WebApplication.CreateBuilder(args);
 
+                //Add loing to the container
+                AddLogging(builder);
 
-
+                //Add services to the container
                 AddServices(builder);
 
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -46,8 +49,28 @@ namespace CST324_myfirst.Api
                
         }
 
+        private static void AddLogging(WebApplicationBuilder builder)
+        {
+            builder.Services.AddLogging(logging =>
+            {
+                logging.ClearProviders();
+                logging
+                .AddFilter("Microsoft", LogLevel.Information)
+                .AddFilter("Microsoft.AspNetCore.HttpLogging", LogLevel.Information)
+                .AddConsole();
+            });
+
+            builder.Services.AddHttpLogging(options =>
+            {
+                options.LoggingFields = 
+                                HttpLoggingFields.RequestPath | HttpLoggingFields.RequestMethod | HttpLoggingFields.ResponseStatusCode;
+            });
+        }
+
         private static void ConfigureApplication(WebApplication app)
         {
+            app.UseHttpLogging();
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
@@ -60,8 +83,8 @@ namespace CST324_myfirst.Api
 
         private static void AddServices(WebApplicationBuilder builder)
         {
-            var connectionString = builder.Configuration.GetConnectionString("MyGuitarShop");
-            //?? throw new InvalidOperationException("MyGuitarShop connectioon string not found. ");
+            var connectionString = builder.Configuration.GetConnectionString("MyGuitarShop")
+                ?? throw new InvalidOperationException("MyGuitarShop connectioon string not found. ");
             // Add services to the container.
 
             builder.Services.AddSingleton(new SqlConnectionFactory(connectionString));
