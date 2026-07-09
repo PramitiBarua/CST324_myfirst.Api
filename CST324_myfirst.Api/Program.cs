@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.HttpLogging;
 using MyGuitarShop.Data.Ado.Factories;
+using MyGuitarShop.Data.Ado.Repository;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -89,6 +90,7 @@ namespace CST324_myfirst.Api
             // Add services to the container.
 
             builder.Services.AddSingleton(new SqlConnectionFactory(connectionString));
+            builder.Services.AddScoped<ProductRepo>();
             builder.Services.AddControllers();
 
         }
