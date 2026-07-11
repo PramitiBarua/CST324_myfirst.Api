@@ -2,4 +2,5 @@
   <Project Path="CST324_myfirst.Api/CST324_myfirst.Api.csproj" />
   <Project Path="MyGuitarShop.Common/MyGuitarShop.Common.csproj" />
   <Project Path="MyGuitarShop.Data.Ado/MyGuitarShop.Data.Ado.csproj" />
+  <Project Path="MyGuitarShop.Data.EFCore/MyGuitarShop.Data.EFCore.csproj" Id="e3013970-719a-49d7-a3dc-c6fedc46a269" />
 </Solution>
